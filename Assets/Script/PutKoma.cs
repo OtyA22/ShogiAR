@@ -39,6 +39,24 @@ public class PutKoma : MonoBehaviour
 
         return go;
     }
+    public GameObject CreateKoma(GameObject koma, int yoko, int tate, double rYoko, double aidaYoko, double rTate, double aidaTate, string name, bool enemyFlag, Vector3 vector3)
+    {
+        GameObject go
+            = Instantiate(
+                            koma,
+                            ReturnMasuZahyou(koma.transform.localPosition, yoko, tate, rYoko, aidaYoko, rTate, aidaTate)+vector3,
+                            koma.transform.localRotation
+                            );
+        go.name = name;
+        if (enemyFlag)
+        {
+            Vector3 vec3 = go.transform.localEulerAngles;
+            vec3.z = 180f;
+            go.transform.localEulerAngles = vec3;
+        }
+
+        return go;
+    }
 
     public GameObject DriveKoma(GameObject koma, int yoko, int tate, double rYoko, double aidaYoko, double rTate, double aidaTate)
     {

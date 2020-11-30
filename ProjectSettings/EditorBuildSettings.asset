@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/BattleScene.unity
+    guid: 0ad618a999331ed42bc255e9e23c070d
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 0d1151e9b9b74b34cbe88db3105bdfea,
+      type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: b607ae873b122bd48936c87802c24eb5,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a11ebb3d695bfa74c8987293c7ee2bdf,
+      type: 2}
