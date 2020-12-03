@@ -34,4 +34,20 @@ public class KomaControl : MonoBehaviour
             return null;
         }
     }
+
+    public string ClickKomaAction(Vector3 vec)
+    {
+        if (this.gameObject.transform.localPosition.y-vec.y < (float)0.11)
+        {
+            // 未選択の場合
+            this.gameObject.transform.localPosition += floatHeight;
+            return this.gameObject.name;
+        }
+        else
+        {
+            // 選択済みの場合
+            this.gameObject.transform.localPosition -= floatHeight;
+            return null;
+        }
+    }
 }

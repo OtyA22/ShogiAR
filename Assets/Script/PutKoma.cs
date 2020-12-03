@@ -64,6 +64,12 @@ public class PutKoma : MonoBehaviour
         koma.transform.localPosition = vec3;
         return koma;
     }
+    public GameObject DriveKoma(GameObject koma, int yoko, int tate, double rYoko, double aidaYoko, double rTate, double aidaTate, Vector3 vector3)
+    {
+        Vector3 vec3 = ReturnMasuZahyou(koma.transform.localPosition, yoko, tate, rYoko, aidaYoko, rTate, aidaTate, vector3);
+        koma.transform.localPosition = vec3;
+        return koma;
+    }
 
     public GameObject DriveFreeKoma(GameObject koma, float yokoF, float tateF,bool bFlag)
     {
@@ -90,10 +96,42 @@ public class PutKoma : MonoBehaviour
         return koma;
     }
 
+    public GameObject DriveFreeKoma(GameObject koma, float yokoF, float tateF, bool bFlag, Vector3 vector3)
+    {
+        Vector3 vec3 = new Vector3(tateF, koma.transform.localPosition.y, yokoF);
+        koma.transform.localPosition = vec3;
+
+        if (!bFlag)
+        {
+            if (koma.transform.localEulerAngles.y > 180f)
+            {
+                // 逆位置の場合
+                Vector3 vecA3 = koma.transform.localEulerAngles;
+                vecA3.y = 90f;
+                koma.transform.localEulerAngles = vecA3;
+            }
+            else
+            {
+                // 正位置の場合
+                Vector3 vecA3 = koma.transform.localEulerAngles;
+                vecA3.y = 270f;
+                koma.transform.localEulerAngles = vecA3;
+            }
+        }
+        return koma;
+    }
+
     public Vector3 ReturnMasuZahyou(Vector3 vec3, int yoko, int tate, double rYoko, double aidaYoko, double rTate,double aidaTate)
     {
         vec3.z = (float)((-1) * rYoko + (aidaYoko / 2) + (aidaYoko) * (yoko - 1));
         vec3.x = (float)((-1) * rTate + (aidaTate / 2) + (aidaTate) * (tate - 1));
+
+        return vec3;
+    }
+    public Vector3 ReturnMasuZahyou(Vector3 vec3, int yoko, int tate, double rYoko, double aidaYoko, double rTate, double aidaTate,Vector3 touchVec)
+    {
+        vec3.z = (float)((-1) * rYoko + (aidaYoko / 2) + (aidaYoko) * (yoko - 1) + touchVec.z);
+        vec3.x = (float)((-1) * rTate + (aidaTate / 2) + (aidaTate) * (tate - 1) + touchVec.x);
 
         return vec3;
     }

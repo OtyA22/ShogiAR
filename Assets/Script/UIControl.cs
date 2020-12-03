@@ -12,15 +12,16 @@ public class UIControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        refObj = GameObject.Find("Event Controller");
-        holdKoma = null;
+        refObj = GameObject.Find("AR Session Origin");
+        //holdKoma = null;
     }
+
 
     public void SelectNari()
     {
         NariPanel.SetActive(false);
         // 駒を裏返す
-        IniSet iSet = refObj.GetComponent<IniSet>();
+        ARIni iSet = refObj.GetComponent<ARIni>();
         iSet.ReverseKoma(holdKoma);
 
         holdKoma = null;
